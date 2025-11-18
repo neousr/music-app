@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input File</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .label {
+            font-size: 13.3333px;
+            background-color: rgb(233, 233, 237);
+            padding: 1px 4px;
+            border-radius: 4px;
+            border: 1px solid rgb(143, 143, 157);
+            /* cursor: pointer; */
+            user-select: none;
+        }
+
+        .label:hover {
+            background-color: rgb(208, 208, 215);
+            border: 1px solid rgb(103, 103, 116);
+        }
+    </style>
+
+</head>
+
+<body>
+    <header></header>
+    <main>
+
+        <div>
+            <!-- <button id="select-files">Select audio files</button> -->
+            <label for="input-file" class="label">Select audio files</label>
+            <input type="file" id="input-file" multiple accept="audio/*" style="display: none;">
+        </div>
+
+    </main>
+    <footer></footer>
+
+    <script>
+
+        "use strict";
+
+        const d = document;
+
+        // const selectFiles = d.getElementById("select-files");
+        // selectFiles.addEventListener("click", e => {
+        //     if (inputFile) inputFile.click();
+        //     e.preventDefault();
+        // });
+        const inputFile = d.getElementById("input-file");
+        let audioFiles = [];
+
+        inputFile.addEventListener("change", e => {
+            if (e.target.files.length === 0) return;
+            audioFiles = [];
+            const files = e.target.files;
+            const len = files.length;
+
+            for (let idx = 0; idx < len; idx++) {
+                const audio = new Audio(URL.createObjectURL(files[idx]));
+                audio.addEventListener("loadedmetadata", e => {
+                    audioFiles.push({
+                        id: idx + 1,
+                        name: files[idx].name,
+                        duration: audio.duration,
+                        size: files[idx].size,
+                        type: files[idx].type
+                    });
+                    URL.revokeObjectURL(audio.src);
+                    if (audioFiles.length === len) {
+                        const jsonFile = new Blob([JSON.stringify(audioFiles, null, 2)], { type: 'application/json' });
+                        const jsonUrl = URL.createObjectURL(jsonFile);
+
+                        const downloadLink = d.createElement('a');
+                        downloadLink.href = jsonUrl;
+                        downloadLink.download = 'playlist.json';
+                        downloadLink.click();
+
+                        URL.revokeObjectURL(jsonUrl);
+                    }
+                });
+            }
+
+        });
+
+    </script>
+
+</body>
+
+</html>

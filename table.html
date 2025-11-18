@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .selected {
+            background-color: rgb(206, 206, 206) !important;
+            border-radius: 4px;
+        }
+
+        .active {
+            background-color: rgb(0, 96, 223) !important;
+            color: #fff;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            user-select: none;
+        }
+
+        .table th,
+        td {
+            padding: 4px;
+        }
+
+        .table tr td:nth-child(3) {
+            text-align: right;
+        }
+
+        .table tr:hover {
+            background-color: rgba(233, 233, 237, .8);
+            border-radius: 16px;
+        }
+    </style>
+</head>
+
+<body style="margin: 1rem;">
+
+    <header></header>
+    <main>
+        <div>
+            <table class="table">
+                <tbody id="tbody">
+                    <tr data-id="1">
+                        <td>1</td>
+                        <td>3-2 Get Funky - Si ya no estás</td>
+                        <td>4:29</td>
+                    </tr>
+                    <tr data-id="2">
+                        <td>2</td>
+                        <td>Amilcar Boscan - Faltaba una razón</td>
+                        <td>4:28</td>
+                    </tr>
+                    <tr data-id="3">
+                        <td>3</td>
+                        <td>Antonio Cartagena - Necesito un amor</td>
+                        <td>4:06</td>
+                    </tr>
+                    <tr data-id="4">
+                        <td>4</td>
+                        <td>Antonio Cartagena - Si tú no estás</td>
+                        <td>4:54</td>
+                    </tr>
+                    <tr data-id="5">
+                        <td>5</td>
+                        <td>Antonio Cartagena - Sin ti</td>
+                        <td>5:25</td>
+                    </tr>
+                    <tr data-id="6">
+                        <td>6</td>
+                        <td>Bobby Valentín - La boda de ella</td>
+                        <td>5:26</td>
+                    </tr>
+                    <tr data-id="7">
+                        <td>7</td>
+                        <td>Conjunto Clásico - Señora ley</td>
+                        <td>4:12</td>
+                    </tr>
+                    <tr data-id="8">
+                        <td>8</td>
+                        <td>Dan Den - Torbellino de amor</td>
+                        <td>5:08</td>
+                    </tr>
+                    <tr data-id="9">
+                        <td>9</td>
+                        <td>David Pabón - Aquel viejo motel</td>
+                        <td>5:09</td>
+                    </tr>
+                    <tr data-id="10">
+                        <td>10</td>
+                        <td>Dimensión Latina - Por tu proceder</td>
+                        <td>4:38</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer></footer>
+
+    <script>
+
+        // "use strict";
+
+        // const d = document;
+
+        // const tbody = d.getElementById("tbody");
+
+        // let previousRowSelected = null, previousRowActive = null;
+
+        // tbody.addEventListener("click", e => {
+        //     if (previousRowSelected) previousRowSelected.classList.remove("selected");
+        //     const tr = e.target.parentNode;
+        //     if (tr.tagName !== "TR") return;
+        //     tr.classList.add("selected");
+        //     previousRowSelected = tr;
+        // });
+
+        // tbody.addEventListener("dblclick", e => {
+        //     if (previousRowActive) previousRowActive.classList.remove("active");
+        //     const tr = e.target.parentNode;
+        //     if (tr.tagName !== "TR") return;
+        //     tr.classList.add("active");
+        //     previousRowActive = tr;
+        // });
+
+
+
+        "use strict";
+
+        // Optimización: `WeakMap` para referencias débiles
+        const tbody = document.getElementById("tbody");
+
+        // `WeakMap` guarda referencias de las filas activas, eliminando referencias en memoria
+        let previousRowSelected = null;
+        let previousRowActive = null;
+
+        const rowMap = new WeakMap();  // Usamos WeakMap para no retener memoria innecesaria
+
+        // Referencias de clases como constantes
+        const CLASS_SELECTED = "selected";
+        const CLASS_ACTIVE = "active";
+
+        // Manejo de eventos de forma unificada
+        tbody.addEventListener("click", handleRowEvent);
+        tbody.addEventListener("dblclick", handleRowEvent);
+
+        function handleRowEvent(e) {
+            const tr = e.target.closest("tr");  // Acceso rápido al TR (si no es un TR, terminamos)
+            if (!tr || tr.tagName !== "TR") return;
+
+            const actionType = e.type === "click" ? CLASS_SELECTED : CLASS_ACTIVE;
+            const previousRow = actionType === CLASS_SELECTED ? previousRowSelected : previousRowActive;
+
+            // No hacer nada si la misma fila ya tiene el estado deseado
+            if (rowMap.get(tr) === actionType) return;
+
+            // Si es un click, deseleccionamos la fila anterior
+            if (previousRow) previousRow.classList.remove(actionType);
+
+            // Actualizamos el estado de la fila seleccionada o activada
+            tr.classList.add(actionType);
+            rowMap.set(tr, actionType);
+
+            // Actualizamos las referencias de la fila seleccionada o activada
+            if (actionType === CLASS_SELECTED) {
+                previousRowSelected = tr;
+            } else {
+                previousRowActive = tr;
+            }
+        }
+
+
+    </script>
+
+</body>
+
+</html>
