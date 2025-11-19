@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Table</title>
+    <title>Music App</title>
 
     <style>
         :root {
@@ -12,6 +12,16 @@
             /* --color2: #cdcdcd; */
             /* --color2: #f0f0f0; */
             --color2: #e9e9ed;
+        }
+
+        body {
+            background-image: url("/home/neo/Documents/workspace/music-app/img/mario-programming.gif");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            color: #fff;
         }
 
         * {
@@ -41,7 +51,8 @@
         }
 
         table tr:hover {
-            background-color: #cdcdcd;
+            /* background-color: #cdcdcd; */
+            background-color: #313538;
             cursor: pointer;
         }
 
@@ -186,12 +197,16 @@
             margin-top: 1rem;
         }
 
+        .mt-15 {
+            margin-top: 1.5rem;
+        }
+
         .mt-2 {
             margin-top: 2rem;
         }
 
         #playlist {
-            height: 272px;
+            height: 256px;
             overflow-y: auto;
         }
 
@@ -207,13 +222,26 @@
         #playlist::-webkit-scrollbar-thumb:hover {
             background-color: rgba(165, 165, 165, 1);
         }
+
+        .container {
+            width: 100%;
+            max-width: 360px;
+            margin: auto;
+            padding: 1rem;
+            border-radius: 1rem;
+            /* box-shadow: 0 0 1rem rgba(3, 3, 3, .5); */
+            /* background-color: rgba(228, 228, 228, .5); */
+            background-color: rgba(3, 3, 3, .8);
+        }
     </style>
 </head>
 
 <body style="margin: 2rem;">
 
-    <main style="width: 100%;max-width: 360px;margin: auto;padding: 1rem;
-    border-radius: 1rem;box-shadow: 0 0 1rem rgba(3, 3, 3, .5);">
+    <!-- <img src="file:///home/neo/Pictures/mario-programming.gif" alt=""> -->
+
+    <!-- Container -->
+    <main class="container">
 
         <!-- Song's information-->
         <div class="text-center mb-1">
@@ -292,12 +320,15 @@
 
         <!-- Volume slider -->
         <div class="flex mb-1">
+            <!-- Volume button -->
             <span id="volume-btn" style="width: 15%;cursor: pointer;display: flex;align-items: center;"
                 title="Silenciar">
+                <!-- Volume high icon -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon">
                     <path fill="currentColor"
                         d="M32 416L128 416L320 568L320 72L128 224L32 224L32 416zM382.3 282.7C393.1 291.6 400 305 400 320C400 335 393.1 348.4 382.3 357.3L370.9 366.6L399.7 405L412.5 394.6C434.1 376.9 448 350.1 448 320C448 289.9 434.1 263.1 412.5 245.5L399.7 235.1L370.9 273.5L382.3 282.8zM442.8 208.2C475.3 234.7 496 274.9 496 320C496 365.1 475.3 405.3 442.8 431.8L428.5 443.4L457.3 481.8L473 469C516.2 433.8 543.9 380.1 543.9 320C543.9 259.9 516.2 206.2 473 171L457.3 158.2L428.5 196.6L442.8 208.2zM503.3 133.7C557.5 177.8 592 244.8 592 320C592 395.2 557.5 462.2 503.3 506.3L486.1 520.3L514.8 558.5L515 558.7L533.6 543.6C598.5 490.8 640 410.2 640 320C640 229.8 598.5 149.3 533.6 96.5L515 81.4L514.8 81.6L486.2 119.8L503.4 133.8z" />
                 </svg>
+                <!-- Volume x-mark icon -->
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" class="icon hidden">
                     <path fill="currentColor"
                         d="M32 416L128 416L320 568L320 72L128 224L32 224L32 416zM577.9 256L544 222.1C537.7 228.4 516.4 249.7 480 286.1C443.6 249.7 422.3 228.4 416 222.1L382.1 256C388.4 262.3 409.7 283.6 446.1 320C409.7 356.4 388.4 377.7 382.1 384L416 417.9C422.3 411.6 443.6 390.3 480 353.9C516.4 390.3 537.7 411.6 544 417.9L577.9 384C571.6 377.7 550.3 356.4 513.9 320C550.3 283.6 571.6 262.3 577.9 256z" />
@@ -317,7 +348,7 @@
 
     </main>
 
-    <footer class="mt-2">
+    <footer class="mt-15">
         <p class="text-center fs-14">Copyright ©️ 2025 | Made with ❤️ by Julio</p>
     </footer>
 
@@ -712,6 +743,8 @@
             // return { artist: name.slice(0, name.indexOf(' -')), title: name.slice(name.indexOf(' - ') + 3, -4) }
             return [name.slice(0, name.indexOf(' -')), name.slice(name.indexOf(' - ') + 3, -4)];
         }
+
+        // https://rrhh.mendoza.gov.ar/sse_generico/generico_login.jsp
 
     </script>
 </body>

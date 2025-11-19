@@ -78,14 +78,13 @@
                     URL.revokeObjectURL(audio.src);
                     if (audioFiles.length === len) {
                         const jsonFile = new Blob([JSON.stringify(audioFiles, null, 2)], { type: 'application/json' });
-                        const jsonUrl = URL.createObjectURL(jsonFile);
 
                         const downloadLink = d.createElement('a');
-                        downloadLink.href = jsonUrl;
+                        downloadLink.href = URL.createObjectURL(jsonFile);
                         downloadLink.download = 'playlist.json';
                         downloadLink.click();
 
-                        URL.revokeObjectURL(jsonUrl);
+                        URL.revokeObjectURL(downloadLink.href);
                     }
                 });
             }

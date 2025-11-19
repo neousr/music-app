@@ -111,75 +111,73 @@
 
     <script>
 
-        // "use strict";
-
-        // const d = document;
-
-        // const tbody = d.getElementById("tbody");
-
-        // let previousRowSelected = null, previousRowActive = null;
-
-        // tbody.addEventListener("click", e => {
-        //     if (previousRowSelected) previousRowSelected.classList.remove("selected");
-        //     const tr = e.target.parentNode;
-        //     if (tr.tagName !== "TR") return;
-        //     tr.classList.add("selected");
-        //     previousRowSelected = tr;
-        // });
-
-        // tbody.addEventListener("dblclick", e => {
-        //     if (previousRowActive) previousRowActive.classList.remove("active");
-        //     const tr = e.target.parentNode;
-        //     if (tr.tagName !== "TR") return;
-        //     tr.classList.add("active");
-        //     previousRowActive = tr;
-        // });
-
-
-
         "use strict";
 
-        // Optimización: `WeakMap` para referencias débiles
-        const tbody = document.getElementById("tbody");
+        const d = document;
 
-        // `WeakMap` guarda referencias de las filas activas, eliminando referencias en memoria
-        let previousRowSelected = null;
-        let previousRowActive = null;
+        const tbody = d.getElementById("tbody");
 
-        const rowMap = new WeakMap();  // Usamos WeakMap para no retener memoria innecesaria
+        let previousRowSelected = null, previousRowActive = null;
 
-        // Referencias de clases como constantes
-        const CLASS_SELECTED = "selected";
-        const CLASS_ACTIVE = "active";
+        tbody.addEventListener("click", e => {
+            if (previousRowSelected) previousRowSelected.classList.remove("selected");
+            const tr = e.target.parentNode;
+            if (tr.tagName !== "TR") return;
+            tr.classList.add("selected");
+            previousRowSelected = tr;
+        });
 
-        // Manejo de eventos de forma unificada
-        tbody.addEventListener("click", handleRowEvent);
-        tbody.addEventListener("dblclick", handleRowEvent);
+        tbody.addEventListener("dblclick", e => {
+            if (previousRowActive) previousRowActive.classList.remove("active");
+            const tr = e.target.parentNode;
+            if (tr.tagName !== "TR") return;
+            tr.classList.add("active");
+            previousRowActive = tr;
+        });
 
-        function handleRowEvent(e) {
-            const tr = e.target.closest("tr");  // Acceso rápido al TR (si no es un TR, terminamos)
-            if (!tr || tr.tagName !== "TR") return;
+        // "use strict";
 
-            const actionType = e.type === "click" ? CLASS_SELECTED : CLASS_ACTIVE;
-            const previousRow = actionType === CLASS_SELECTED ? previousRowSelected : previousRowActive;
+        // // Optimización: `WeakMap` para referencias débiles
+        // const tbody = document.getElementById("tbody");
 
-            // No hacer nada si la misma fila ya tiene el estado deseado
-            if (rowMap.get(tr) === actionType) return;
+        // // `WeakMap` guarda referencias de las filas activas, eliminando referencias en memoria
+        // let previousRowSelected = null;
+        // let previousRowActive = null;
 
-            // Si es un click, deseleccionamos la fila anterior
-            if (previousRow) previousRow.classList.remove(actionType);
+        // const rowMap = new WeakMap();  // Usamos WeakMap para no retener memoria innecesaria
 
-            // Actualizamos el estado de la fila seleccionada o activada
-            tr.classList.add(actionType);
-            rowMap.set(tr, actionType);
+        // // Referencias de clases como constantes
+        // const CLASS_SELECTED = "selected";
+        // const CLASS_ACTIVE = "active";
 
-            // Actualizamos las referencias de la fila seleccionada o activada
-            if (actionType === CLASS_SELECTED) {
-                previousRowSelected = tr;
-            } else {
-                previousRowActive = tr;
-            }
-        }
+        // // Manejo de eventos de forma unificada
+        // tbody.addEventListener("click", handleRowEvent);
+        // tbody.addEventListener("dblclick", handleRowEvent);
+
+        // function handleRowEvent(e) {
+        //     const tr = e.target.closest("tr");  // Acceso rápido al TR (si no es un TR, terminamos)
+        //     if (!tr || tr.tagName !== "TR") return;
+
+        //     const actionType = e.type === "click" ? CLASS_SELECTED : CLASS_ACTIVE;
+        //     const previousRow = actionType === CLASS_SELECTED ? previousRowSelected : previousRowActive;
+
+        //     // No hacer nada si la misma fila ya tiene el estado deseado
+        //     if (rowMap.get(tr) === actionType) return;
+
+        //     // Si es un click, deseleccionamos la fila anterior
+        //     if (previousRow) previousRow.classList.remove(actionType);
+
+        //     // Actualizamos el estado de la fila seleccionada o activada
+        //     tr.classList.add(actionType);
+        //     rowMap.set(tr, actionType);
+
+        //     // Actualizamos las referencias de la fila seleccionada o activada
+        //     if (actionType === CLASS_SELECTED) {
+        //         previousRowSelected = tr;
+        //     } else {
+        //         previousRowActive = tr;
+        //     }
+        // }
 
 
     </script>
