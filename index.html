@@ -14,8 +14,15 @@
             --color2: #e9e9ed;
         }
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
         body {
-            background-image: url("/home/neo/Documents/workspace/music-app/img/chill-mario.gif");
+            background-image: url("/home/neo/Documents/workspace/music-app/img/sunset.png");
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
@@ -24,11 +31,15 @@
             color: #fff;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, Helvetica, sans-serif;
+        .container {
+            width: 100%;
+            max-width: 360px;
+            margin: auto;
+            padding: 1rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 .25rem rgba(233, 2333, 233, .5);
+            /* background-color: rgba(3, 3, 3, .8); */
+            background-color: rgba(3, 8, 22, .8);
         }
 
         table {
@@ -74,14 +85,22 @@
             gap: 1rem;
         }
 
-        #controls button {
-            display: flex;
-            align-items: center;
-        }
-
         .btn {
             padding: 5px 8px;
             cursor: pointer;
+            width: 48px;
+            height: 48px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            font-size: 1rem;
+            background-color: transparent;
+            color: #fff;
+            outline: none;
+            border: 1px solid;
+            box-shadow: 0 0 .4rem rgba(255, 255, 255, .8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .hidden {
@@ -222,17 +241,6 @@
         #playlist::-webkit-scrollbar-thumb:hover {
             background-color: rgba(165, 165, 165, 1);
         }
-
-        .container {
-            width: 100%;
-            max-width: 360px;
-            margin: auto;
-            padding: 1rem;
-            border-radius: 1rem;
-            /* box-shadow: 0 0 1rem rgba(3, 3, 3, .5); */
-            /* background-color: rgba(3, 3, 3, .8); */
-            background-color: rgba(3, 8, 22, .8);
-        }
     </style>
 </head>
 
@@ -348,7 +356,7 @@
 
     </main>
 
-    <footer class="mt-15">
+    <footer class="mt-1">
         <p class="text-center fs-14" style="font-weight: bold;">Copyright ©️ 2025 | Made with ❤️ by Julio</p>
     </footer>
 
@@ -361,7 +369,7 @@
 
         const d = document;
 
-        let URL = `https://neobte.github.io/music-player/audio/salsa/`;
+        let URL = `https://neobte.github.io/music-player/audio/rock/`;
         let songList, songListCopy, songMap, songListLength, songIndex = 0;
         let previousRow = null;
         let isShuffle = false;
