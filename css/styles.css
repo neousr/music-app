@@ -59,7 +59,7 @@
 .slider::-webkit-slider-runnable-track {
   height: 4px;
   cursor: pointer;
-  background-color: var(--color2);
+  background-color: #0d1117;
   border-radius: 2px;
 }
 
