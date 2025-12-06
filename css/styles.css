@@ -64,7 +64,7 @@
 }
 
 .slider:focus::-webkit-slider-runnable-track {
-  background: var(--color1);
+  background: #fff;
 }
 
 /* Mozilla Firefox */
