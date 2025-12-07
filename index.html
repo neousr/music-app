@@ -10,7 +10,7 @@
 
 <body>
 
-    <main style="margin: 2rem 1rem;color: #9198a1;">
+    <main style="margin: 1rem;color: #9198a1;">
 
         <div class="container" style="
         background-color: #151b23;height: 256px;border-top-left-radius: 1rem;border-top-right-radius: 1rem;">
@@ -96,16 +96,15 @@
             </div>
 
             <!-- Current time slider -->
-            <div style="display: flex;align-items: center;font-size: .875rem;gap: 1rem;padding: .25rem;">
-                <span id="current-time">0:00</span>
+            <div style="display: flex;align-items: center;font-size: .875rem;padding: .25rem;">
+                <span id="current-time" style="width: 15%;">0:00</span>
                 <input type="range" id="audio-current-time-slider" min="0" max="100" value="50" step=".01"
-                    class="slider">
-                <span id="duration">3:33</span>
+                    class="slider" style="flex: 1;">
+                <span id="duration" style="width: 15%;" class="text-right">3:33</span>
             </div>
 
             <!-- Volume slider -->
-            <div
-                style="width: 50%;display: flex;align-items: center;font-size: .875rem;gap: 1rem;padding: .25rem;margin: auto;">
+            <div style="display: flex;align-items: center;font-size: .875rem;padding: .25rem;margin: auto;width: 60%;">
                 <!-- Volume btn 21 x 21-->
                 <span id="volume-btn" style="width: 15%;cursor: pointer;display: flex;align-items:center;"
                     title="Silenciar">
@@ -121,15 +120,15 @@
                     </svg>
                 </span>
                 <input type="range" id="volume-slider" min="0" max="100" value="50" step="1" class="slider"
-                    style="width: 70%;">
-                <span id="volume-display" style="text-align: right;width: 15%;">100</span>
+                    style="flex: 1;">
+                <span id="volume-display" style="width: 15%;text-align: right;">100</span>
                 <!-- 23.35 x 17 -->
             </div>
 
         </div>
 
         <div class="container" style="
-        background-color: #0d1117;height: 256px;border-bottom-left-radius: 1rem;border-bottom-right-radius: 1rem;
+        background-color: #0d1117;height: 280px;border-bottom-left-radius: 1rem;border-bottom-right-radius: 1rem;
         overflow-y: auto;overflow-x: hidden;">
 
 
