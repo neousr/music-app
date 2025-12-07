@@ -14,7 +14,7 @@
 
 .container {
   width: 100%;
-  max-width: 352px;
+  max-width: 336px;
   padding: 1rem;
   margin: auto;
 }
@@ -69,7 +69,7 @@
 .slider::-webkit-slider-runnable-track {
   height: 4px;
   cursor: pointer;
-  background-color: #0d1117;
+  background-color: #283041;
   border-radius: 2px;
 }
 
@@ -97,7 +97,7 @@
   height: 4px;
   cursor: pointer;
   /* background-color: rgba(65, 0, 0, 255); */
-  background-color: #0d1117;
+  background-color: #283041;
   border-radius: 2px;
 }
 
@@ -199,4 +199,8 @@ h4 {
 .flex {
   display: flex;
   align-items: center;
+}
+
+.fs-14 {
+  font-size: 0.875rem;
 }
