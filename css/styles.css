@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Nunito";
-  src: url("../font/static/Nunito-Regular.ttf") format("truetype");
+  src: url("../font/Nunito/static/Nunito-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -14,7 +14,7 @@
 
 .container {
   width: 100%;
-  max-width: 312px;
+  max-width: 320px;
   padding: 1rem;
   margin: auto;
 }
@@ -143,15 +143,15 @@ h4 {
 }
 
 .table tr td:nth-child(1) {
-  width: 12.5%;
+  width: 15%;
 }
 
 .table tr td:nth-child(2) {
-  width: 75%;
+  width: 65%;
 }
 
 .table tr td:nth-child(3) {
-  width: 12.5%;
+  width: 20%;
   text-align: right;
 }
 

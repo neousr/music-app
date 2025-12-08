@@ -428,11 +428,11 @@ const formatTime = (seconds, format = 0) => {
   if (format === 0) {
     return hours > 0
       ? // Show hours:minutes:seconds format
-        `${hours}:${/*minutes < 10 ? '0' + minutes : */ minutes}:${
+        `${hours}:${minutes < 10 ? "0" + minutes : minutes}:${
           remainingSeconds < 10 ? "0" + remainingSeconds : remainingSeconds
         }`
       : // Show minutes:seconds format
-        `${/*minutes < 10 ? '0' + minutes :*/ minutes}:${
+        `${minutes < 10 ? "0" + minutes : minutes}:${
           remainingSeconds < 10 ? "0" + remainingSeconds : remainingSeconds
         }`;
   }
