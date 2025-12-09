@@ -14,7 +14,7 @@
 
 .container {
   width: 100%;
-  max-width: 320px;
+  max-width: 296px;
   padding: 1rem;
   margin: auto;
 }
@@ -168,7 +168,7 @@ h4 {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 }
 
 #controls span {

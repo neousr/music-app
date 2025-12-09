@@ -1,0 +1,1 @@
+https://fontawesome.com/search?f=sharp&s=solid

@@ -204,11 +204,11 @@ shuffleBtn.addEventListener("click", (e) => {
     shufflePlayback(songListCopy);
     // Seteamos el indice a cero
     songIndex = 0;
-    shuffleBtn.children[0].querySelector("circle").style.display = "block";
+    shuffleBtn.children[0].querySelector("rect").style.display = "block";
     shuffleBtn.title = "Desactivar orden aleatorio";
   } else {
     sequentialPlayback(songList);
-    shuffleBtn.children[0].querySelector("circle").style.display = "none";
+    shuffleBtn.children[0].querySelector("rect").style.display = "none";
     shuffleBtn.title = "Activar orden aleatorio";
   }
 });
@@ -271,7 +271,7 @@ repeatBtn.addEventListener("click", (e) => {
   if (repeatState === 1) {
     isRepeatAll = true;
     repeatBtn.title = "Repetir canción indefinidamente";
-    repeatBtn.children[0].querySelector("circle").style.display = "block";
+    repeatBtn.children[0].querySelector("rect").style.display = "block";
     return;
   }
 
@@ -279,7 +279,7 @@ repeatBtn.addEventListener("click", (e) => {
     isRepeatAll = false;
     audioPlayer.loop = true;
     repeatBtn.title = "Desactivar la repetición indefinida";
-    repeatBtn.children[0].querySelector("circle").style.display = "none";
+    repeatBtn.children[0].querySelector("rect").style.display = "none";
     repeatBtn.children[0].style.display = "none";
     repeatBtn.children[1].style.display = "block";
     return;
@@ -432,7 +432,7 @@ const formatTime = (seconds, format = 0) => {
           remainingSeconds < 10 ? "0" + remainingSeconds : remainingSeconds
         }`
       : // Show minutes:seconds format
-        `${minutes < 10 ? "0" + minutes : minutes}:${
+        `${/*minutes < 10 ? "0" + minutes : */ minutes}:${
           remainingSeconds < 10 ? "0" + remainingSeconds : remainingSeconds
         }`;
   }
