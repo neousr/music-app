@@ -17,6 +17,7 @@
   max-width: 280px;
   padding: 1rem;
   margin: auto;
+  user-select: none;
 }
 
 .text-center {

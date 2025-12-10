@@ -2,7 +2,7 @@
 
 const d = document;
 
-const PATH = `https://neobte.github.io/music-player/audio/salsa/`;
+const PATH = `https://neobte.github.io/music-player/audio/rock/`;
 
 let previousRowActive = null;
 
