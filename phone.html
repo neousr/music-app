@@ -41,6 +41,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
+
+            background-color: #fff;
+            color: #151b23;
         }
 
         .flex {
@@ -61,6 +64,7 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            user-select: none;
         }
 
         .container-grid {
@@ -85,6 +89,7 @@
             width: 276px;
             height: 555px;
             background-color: #fff;
+            /* background-color: violet; */
             border-radius: 30px;
             border: 2px solid rgba(0, 0, 0, 0.3);
             box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3);
@@ -93,7 +98,9 @@
 
         .screen {
             position: relative;
-            /* background: #262626; */
+            /* background: #fff; */
+            background-color: #151b23;
+            color: #fff;
             border: 2px solid rgba(0, 0, 0, 0.3);
             /* box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.3); */
             width: 256px;
@@ -127,13 +134,13 @@
 
         .home {
             position: absolute;
-            bottom: 45px;
+            bottom: 47px;
             left: 50%;
             transform: translateX(-50%);
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: #fff;
+            /* background: violet; */
             border: 2px solid #cecece;
             cursor: pointer;
             box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.1);
@@ -199,8 +206,12 @@
 
         .playing {
             /* background-color: #283041 !important; */
-            background-color: #e5e5e5 !important;
+            /* background-color: #e5e5e5 !important; */
+            /* background-color: violet !important; */
             /* color: #fff; */
+
+            background-color: #283041 !important;
+            color: #fff;
         }
 
         .hidden {
@@ -325,7 +336,8 @@
         }
 
         .table tr:hover {
-            background-color: #f2f2f2;
+            /* background-color: #f2f2f2; */
+            background-color: #0d1117;
             cursor: pointer;
         }
 
@@ -384,7 +396,7 @@
             <div class="screen">
 
                 <!-- Eject and Playlists btn -->
-                <div class="flex space-between" style="margin: 0 .5rem 1rem .5rem;">
+                <div class="flex space-between" style="margin: .5rem">
 
                     <!-- Eject btn -->
                     <button id="fileSelect" class="btn" title="Seleccionar archivo(s)">
