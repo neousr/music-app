@@ -121,16 +121,16 @@
             z-index: 9999; */
         }
 
-        .screen::before {
-            /* content: "";
+        /* .screen::before {
+            content: "";
             position: absolute;
             top: 0;
             left: 0;
             background: rgba(255, 255, 255, 0.1);
             width: 100%;
             height: 100%;
-            transform: skewX(-5deg) translateX(-50%); */
-        }
+            transform: skewX(-5deg) translateX(-50%);
+        } */
 
         .home {
             position: absolute;
@@ -140,7 +140,6 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            /* background: violet; */
             border: 2px solid #cecece;
             cursor: pointer;
             box-shadow: inset 0 0 7px rgba(0, 0, 0, 0.1);
@@ -157,7 +156,7 @@
             background: #262626;
         }
 
-        .inner::before {
+        /* .inner::before {
             content: "";
             position: absolute;
             top: -2px;
@@ -166,9 +165,9 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-        }
+        } */
 
-        .inner::after {
+        /* .inner::after {
             content: "";
             position: absolute;
             top: -16px;
@@ -178,7 +177,7 @@
             width: 6px;
             height: 6px;
             border-radius: 50%;
-        }
+        } */
 
         .mb-1 {
             margin-bottom: 1rem;
@@ -982,6 +981,8 @@
             } else {
                 songInfo.style.animation = "none";
             }
+
+            // d.body.style.background = `linear-gradient(to right, ${getRandomHexColor(64)}, ${getRandomHexColor(64)})`;
         };
 
         const scrollToRow = () => {
@@ -1106,6 +1107,13 @@
             };
         }
 
+        const getRandomHexColor = (max = 256) => {
+            if (0 > max || max > 256) return;
+            return '#' +
+                ((Math.random() * max) | 0).toString(16).padStart(2, '0') +
+                ((Math.random() * max) | 0).toString(16).padStart(2, '0') +
+                ((Math.random() * max) | 0).toString(16).padStart(2, '0');
+        }
 
     </script>
 
