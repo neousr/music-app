@@ -849,7 +849,7 @@
                 setTimeout(() => {
                     isFirstClick = true;
                 }, 3000);
-            } else if (!isFirstClick || audioPlayer.currentTime === 0) {
+            } else if (!isFirstClick || audioPlayer.currentTime === 0 || numFiles < 2) {
                 songIndex = (songIndex - 1 + numFiles) % numFiles;
                 if (!audioPlayer.paused) {
                     loadSong(songIndex);
@@ -864,7 +864,7 @@
 
         // Forward event
         forwardBtn.addEventListener("click", (e) => {
-            if (audioPlayer.src === "") return;
+            if (audioPlayer.src === "" || numFiles < 2) return;
             songIndex = (songIndex + 1) % numFiles;
             if (!audioPlayer.paused) {
                 loadSong(songIndex);
