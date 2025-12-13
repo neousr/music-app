@@ -756,6 +756,7 @@
         });
 
         volumeXmarkBtn.addEventListener("click", () => {
+            if (audioPlayer.volume === 0) return;
             audioPlayer.volume = 0;
             volumeSlider.value = 0;
 
@@ -777,6 +778,8 @@
         });
 
         volumeHighBtn.addEventListener("click", () => {
+
+            if (audioPlayer.volume === 1) return;
             audioPlayer.volume = 1;
             volumeSlider.value = 100;
         });
