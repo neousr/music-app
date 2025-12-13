@@ -409,11 +409,8 @@
                 </div>
 
                 <!-- Song information -->
-                <div id="song-info-container" style="margin-bottom: 1.5rem;
-                box-shadow: inset 0 0 1rem rgba(255, 255, 255, 0.1);">
-                    <h3 id="song-info" class="text-center fw-400">
-                        Grupo Río - Todo estaba bien
-                    </h3>
+                <div id="song-info-container" style="margin-bottom: 1.5rem;">
+                    <h3 id="song-info" class="text-center fw-400">Grupo Río - Todo estaba bien</h3>
                 </div>
 
                 <!-- Audio controls -->
@@ -610,9 +607,6 @@
 
         const inputFile = d.getElementById("input-file");
         const tbody = d.getElementById("tbody");
-
-        // const artistName = d.getElementById("artist-name");
-        // const songTitle = d.getElementById("song-title");
 
         const songInfo = d.getElementById("song-info");
         const parentElementOffsetWidth = songInfo.parentElement.offsetWidth;
@@ -908,9 +902,9 @@
             for (let idx = 0; idx < numFiles; idx++) {
                 const tr = d.createElement("tr");
                 tr.dataset.id = songs[idx].id;
-                const { artistName, title } = parseName(songs[idx].name);
+                const { artist, title } = parseName(songs[idx].name);
                 tr.innerHTML = `<td><span>${idx + 1}</span></td>
-                <td><h3>${title}</h3><h4>${artistName}</h4></td>
+                <td><h3>${title}</h3><h4>${artist}</h4></td>
                 <td><span>${formatTime(songs[idx].duration)}</span></td>`;
                 fragment.appendChild(tr);
             }
@@ -942,9 +936,14 @@
                 playAudio();
 
                 const infoSong = parseName(song.name);
-                // artistName.textContent = infoSong.artistName;
-                // songTitle.textContent = infoSong.title;
-                songInfo.textContent = infoSong.artistName + " - " + infoSong.title;
+                songInfo.textContent = infoSong.artist + " - " + infoSong.title;
+
+                if (songInfo.scrollWidth > parentElementOffsetWidth) {
+                    songInfo.style.animation = "slideIn 16s linear infinite";
+                } else {
+                    songInfo.style.animation = "none";
+                }
+
             });
         };
 
@@ -956,9 +955,8 @@
             audioPlayer.preload = "auto";
             audioPlayer.load();
             const song = parseName(songListCopy[songIndex].name);
-            songInfo.textContent = song.artistName + " - " + song.title;
-            // artistName.textContent = song.artistName;
-            // songTitle.textContent = song.title;
+            songInfo.textContent = song.artist + " - " + song.title;
+
             if (songInfo.scrollWidth > parentElementOffsetWidth) {
                 songInfo.style.animation = "slideIn 16s linear infinite";
             } else {
@@ -1020,7 +1018,7 @@
         // https://www.w3schools.com/jsref/jsref_obj_string.asp
         const parseName = (name) => {
             return {
-                artistName: name.slice(0, name.indexOf(" - ")),
+                artist: name.slice(0, name.indexOf(" - ")),
                 title: name.slice(name.indexOf(" - ") + 3, -4),
             };
 
