@@ -308,7 +308,7 @@ const displaySongs = (songs) => {
     tr.dataset.id = songs[idx].id;
     const { artistName, title } = parseName(songs[idx].name);
     tr.innerHTML = `<td><span>${idx + 1}</span></td>
-                <td><h3>${artistName}</h3><h4>${title}</h4></td>
+                <td><h3>${title}</h3><h4>${artistName}</h4></td>
                 <td><span>${formatTime(songs[idx].duration)}</span></td>`;
     fragment.appendChild(tr);
   }
