@@ -35,7 +35,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1.2rem;
+            gap: 1rem;
         }
 
         #play-pause-btn {
@@ -508,7 +508,7 @@
                 </div>
 
                 <!-- Volume controls-->
-                <div class="fs-12 flex center" style="gap: 1rem;width: 80%;margin: 0 auto;">
+                <div class="fs-12 flex center" style="gap: 1rem;width: 75%;margin: 0 auto;">
                     <!-- Volumen-xmark btn -->
                     <button id="volume-xmark-btn" class="btn" title="Silenciar">
                         <!-- Volume-xmark icon -->
@@ -734,8 +734,8 @@
                 loadSong(songIndex);
                 playAudio();
 
-                // Si shuffle is true, barajamos el array
-                if (isShuffle) {
+                // Si shuffle is true y hay más de dos canciones, barajamos el array
+                if (isShuffle && numFiles > 2) {
                     shufflePlayback(songListCopy);
                 }
             });
@@ -823,7 +823,8 @@
 
         // Shuffle event
         shuffleBtn.addEventListener("click", (e) => {
-            if (audioPlayer.src === "") return;
+            // alert(`Numero de archivos: ${numFiles}`);
+            if (audioPlayer.src === "" || numFiles < 3) return;
             isShuffle = !isShuffle;
             if (isShuffle) {
                 shufflePlayback(songListCopy);
@@ -883,7 +884,7 @@
 
         // Repeat event
         repeatBtn.addEventListener("click", (e) => {
-            if (audioPlayer.src === "") return;
+            if (audioPlayer.src === "" || numFiles < 2) return;
             repeatState = (repeatState + 1) % 3;
 
             if (repeatState === 0) {
