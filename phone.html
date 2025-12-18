@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<!-- https://www.youtube.com/watch?v=_e0ddNlc0Y8&pp=ygUgY3NzIHBvc2l0aW9uIHJlbGF0aXZlIHkgYWJzb2x1dGXSBwkJKQoBhyohjO8%3D -->
 <!-- ~/.zsh_history -->
 <!-- ~/.bash_history -->
 
@@ -373,7 +373,7 @@
         #song-info-container {
             overflow: hidden;
             position: relative;
-            margin: 1rem;
+            margin: 1rem .5rem;
         }
 
         #song-info {
@@ -395,10 +395,18 @@
                 /* Se mueve hacia fuera de la pantalla por la izquierda */
             }
         }
+
+        .ocultar {
+            opacity: 0;
+        }
     </style>
 </head>
 
 <body>
+
+    <!-- Tratame suavemente -->
+    <!-- Te siento de solo pensar -->
+    <!-- Como te va mi amor -->
 
     <div class="center-c">
 
@@ -407,7 +415,7 @@
             <div class="screen">
 
                 <!-- Eject and Playlists btn -->
-                <div class="flex space-between" style="margin: .5rem">
+                <div class="flex space-between" style="margin: .3rem">
 
                     <!-- Eject btn -->
                     <button id="fileSelect" class="btn" title="Seleccionar archivo(s)">
@@ -432,7 +440,7 @@
                 </div>
 
                 <!-- Song information -->
-                <div id="song-info-container" style="margin-bottom: 1rem;">
+                <div id="song-info-container">
                     <h2 id="song-info" class="text-center fw-400">Grupo Río - Todo estaba bien</h2>
                 </div>
 
@@ -605,7 +613,7 @@
         </div>
 
         <div class="text-center mt-1">
-            <p style="font-size: 12px;">Copyright ©️ 2025 | Made with ❤️ by Daría</p>
+            <p id="copyright" class="ocultar" style="font-size: 12px;">Copyright ©️ 2025 | Made with ❤️ to Daría</p>
         </div>
 
     </div>
@@ -616,6 +624,16 @@
         "use strict";
 
         const d = document;
+
+        // 
+
+        const home = d.querySelector(".home");
+
+        home.addEventListener("click", e => {
+            d.getElementById("copyright").classList.toggle("ocultar");
+        });
+
+        // 
 
         const PATH = `https://neobte.github.io/music-player/audio/rock/`;
 
@@ -824,7 +842,8 @@
         // Shuffle event
         shuffleBtn.addEventListener("click", (e) => {
             // alert(`Numero de archivos: ${numFiles}`);
-            if (audioPlayer.src === "" || numFiles < 3) return;
+            // if (audioPlayer.src === "" || numFiles < 3) return;
+            if (audioPlayer.src === "") return;
             isShuffle = !isShuffle;
             if (isShuffle) {
                 shufflePlayback(songListCopy);
@@ -884,7 +903,8 @@
 
         // Repeat event
         repeatBtn.addEventListener("click", (e) => {
-            if (audioPlayer.src === "" || numFiles < 2) return;
+            // if (audioPlayer.src === "" || numFiles < 2) return;
+            if (audioPlayer.src === "") return;
             repeatState = (repeatState + 1) % 3;
 
             if (repeatState === 0) {
